@@ -7,8 +7,8 @@ class Vector:
         if self.validate_params(magnitude, direction):
             self.magnitude = magnitude
             self.direction = direction
-            self.xcomponent = math.cos(self.direction / math.pi) * self.magnitude
-            self.ycomponent = math.sin(self.direction / math.pi) * self.magnitude
+            self.xcomponent = math.cos(self.direction * (2 * math.pi)/360) * self.magnitude
+            self.ycomponent = math.sin(self.direction * (2 * math.pi)/360) * self.magnitude
 
     def validate_params(self, mag, dir):
         if type(mag) not in [int, float]:
@@ -31,6 +31,7 @@ class Vector:
             raise TypeError(
                 "Invalid Direction: direction cannot be less than 0 or greater than 360"
             )
+        return True
 
     def components(self):
         return (self.xcomponent, self.ycomponent)
